@@ -75,14 +75,7 @@ public class MainActivity extends AppCompatActivity {
         });
   }
 
-  @Override
-  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-    return super.onOptionsItemSelected(item);
-    Intent infoIntent = onNewIntent(this,InfoActivity.class);
-      startActivity(infoIntent);
 
-
-  }
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,9 +83,13 @@ public class MainActivity extends AppCompatActivity {
     inflater.inflate(R.menu.main, menu);
     return true;
   }
-  // ***
-  // TODO - Task 1 - Show Store Information Activity
-  // ***
+
+  @Override
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    return super.onOptionsItemSelected(item);
+    Intent infoIntent = new Intent(this, InfoActivity.class);
+    startActivity(infoIntent);
+  }
 
   private void addCandiesToDatabase(Candy[] candies) {
     SQLiteDatabase db = candyDbHelper.getWritableDatabase();
